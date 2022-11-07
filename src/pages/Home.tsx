@@ -40,6 +40,7 @@ const UserPicture = styled.img`
   height: 200px;
   width: 200px;
 
+  object-fit: cover;
   margin-top: -100px;
   border: 5px solid ${p => p.theme.colors.primary};
   border-radius: ${p => p.theme.borderRadius.roundedFull};
