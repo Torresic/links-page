@@ -5,7 +5,8 @@ export const PageTheme = {
     secondary: "#17142C",
     secondaryText: "#9C97BD",
     black: "#000000",
-    white: "#FFFFFF"
+    white: "#FFFFFF",
+    transparent: "rgba(255,255,255, 0)"
   },
   borderRadius: {
     roundedNone: "0px",
