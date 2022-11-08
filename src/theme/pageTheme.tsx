@@ -1,7 +1,9 @@
 export const PageTheme = {
   colors: {
     primary: "#0CEBBB",
+    primaryTransparent: "rgba(12, 235, 187, 0)",
     secondary: "#17142C",
+    secondaryText: "#9C97BD",
     black: "#000000",
     white: "#FFFFFF"
   },

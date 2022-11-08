@@ -22,7 +22,7 @@ const HomeHeaderContainer = styled.div`
 `
 
 const PageName = styled.h2`
-  font-size: 3rem;
+  font-size: clamp(24px, 3vw, 48px);
   font-weight: 900;
   
   text-shadow: 2px 2px 4px rgba(0,0,0,0.56);
