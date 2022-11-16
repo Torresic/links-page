@@ -1,10 +1,18 @@
+import { ForwardRefComponent, HTMLMotionProps, Variants } from "framer-motion";
 import styled from "styled-components";
 import BackgroundImage from "../img/profileBackground.jpg"
 
-export const HomeHeader = () => {
+interface HomeHeaderProps {
+  as: ForwardRefComponent<HTMLDivElement, HTMLMotionProps<"div">>;
+  variants: Variants;
+}
+
+export const HomeHeader = (props: HomeHeaderProps) => {
+  const { as, variants } = props;
+
   return (
     <HomeHeaderContainer>
-        <PageName>Biography Links</PageName>
+        <PageName as={as} variants={variants} initial="hidden" animate="show">Biography Links</PageName>
     </HomeHeaderContainer>
   )
 };

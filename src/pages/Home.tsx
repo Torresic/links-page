@@ -1,30 +1,74 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import { HomeHeader } from "../components/HomeHeader";
 import { LinkCard } from "../components/LinkCard";
 import { Links } from "../links/Links";
-import { motion } from "framer-motion"
 
 export const Home = () => {
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.5
+      }
+    }
+  }
+
+  const variantSideAnimated = {
+    hidden: {  x: -100, opacity: 0 },
+    show: {
+      x: 0, 
+      opacity: 1, 
+      transition: {
+        delay: 0.25
+      }
+    }
+  }
+
+  const variantScale = {
+    hidden: {  scale: 0, opacity: 0 },
+    show: {
+      scale: 1,
+      opacity: 1, 
+    }
+  }
+
   return (
     <HomeContainer>
-      <HomeHeader />
+      <HomeHeader as={motion.div} variants={variantSideAnimated}/>
       <HomeContentContainer>
-        <UserPicture src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cG9ydHJhaXR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
+        <UserPicture src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cG9ydHJhaXR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+        />
         <GroupContainer>
-          <UserName as={motion.h1} animate={{ scale: 1 }} initial={{ scale: 0 }} transition={{ delay: 0.25 }}>Ismael Caballero Torres</UserName>
-          <UserDescription as={motion.h2} animate={{ scale: 1 }} initial={{ scale: 0 }} transition={{ delay: 0.5 }}>
+          <UserName as={motion.h1} variants={variantSideAnimated} initial="hidden" animate="show">
+            Ismael Caballero Torres
+          </UserName>
+          <UserDescription as={motion.h2} variants={variantScale} initial="hidden" animate="show">
             Front-end, Android Developer & UI/UX Designer
           </UserDescription>
         </GroupContainer>
         <Divider />
-        <LinksContainer>
+        <LinksContainer as={motion.div} variants={container}>
           <LinksTitle>My Links</LinksTitle>
-          { Links.map(e => 
-              <LinkCard  color={e.color} icon={e.icon} title={e.title} order={e.order} />
-            
-            ) }
+          {Links.map((e, i) => (
+            <LinkCard
+              as={motion.div}
+              variants={variantScale}
+              delay={i * 0.2}
+              color={e.color}
+              icon={e.icon}
+              title={e.title}
+              order={e.order}
+              key={e.icon}
+            />
+          ))}
         </LinksContainer>
         <Divider />
+        <FooterContainer>
+          <FooterText>© Ismael Caballero Torres</FooterText>
+          <FooterText>2022</FooterText>
+        </FooterContainer>
       </HomeContentContainer>
     </HomeContainer>
   );
@@ -47,6 +91,7 @@ const HomeContentContainer = styled.div`
   align-items: center;
   position: absolute;
   gap: ${(p) => p.theme.spacing.spacing48};
+  padding-bottom: ${(p) => p.theme.spacing.spacing48};
   top: 30%;
 
   border-top: ${(p) => `5px solid ${p.theme.colors.primary}`};
@@ -113,4 +158,20 @@ const Divider = styled.hr`
     `linear-gradient(0.25turn, ${p.theme.colors.primary}, ${p.theme.colors.primaryTransparent})`};
   border: none;
   height: 5px;
+`;
+
+const FooterContainer = styled.div`
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+const FooterText = styled.h2`
+  color: ${(p) => p.theme.colors.primary};
+  font-size: clamp(16px, 1.25vw, 20px);
+  line-height: clamp(16px, 1.25vw, 20px);
+  font-family: "Lato";
+  font-weight: 400;
+  text-align: center;
 `;
