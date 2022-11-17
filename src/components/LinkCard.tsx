@@ -45,9 +45,9 @@ interface CardContainerProps {
 
 const CardContainer = styled.div<CardContainerProps>`
   width: 100%;
-  height: 100px;
+  height: 75px;
   padding: ${(p) =>
-    `${p.theme.spacing.spacing12} ${p.theme.spacing.spacing48}`};
+    `${p.theme.spacing.spacing12} ${p.theme.spacing.spacing16}`};
 
   display: flex;
   flex-direction: row;
@@ -73,7 +73,10 @@ const CardContainer = styled.div<CardContainerProps>`
   }
 
   @media ${p => p.theme.breakpoints.width.desktopS} {
+    height: 75px;
     width: 80%;
+    padding: ${(p) =>
+    `${p.theme.spacing.spacing12} ${p.theme.spacing.spacing48}`};
   }
 `;
 
@@ -84,7 +87,7 @@ const CardTitle = styled.h2`
   font-size: clamp(16px, 2vw, 32px);
   line-height: clamp(16px, 2vw, 32px);
   font-family: "Lato";
-  font-weight: 300;
+  font-weight: 600;
   text-align: center;
 `;
 

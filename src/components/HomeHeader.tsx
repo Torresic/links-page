@@ -18,15 +18,19 @@ export const HomeHeader = (props: HomeHeaderProps) => {
 };
 
 const HomeHeaderContainer = styled.div`
-    height: 40%;
+    height: 60%;
     width: 100%;
-    padding: ${p => p.theme.spacing.spacing32};
+    padding: ${p => p.theme.spacing.spacing16};
 
     position: absolute;
     z-index: -1;
     
     background: ${p => `${p.theme.colors.primary} url('${BackgroundImage}') no-repeat fixed center`};
     background-size: cover;
+    @media ${p => p.theme.breakpoints.width.desktopS} {
+    height: 40%;
+    padding: ${p => p.theme.spacing.spacing32};
+  }
 `
 
 const PageName = styled.h2`

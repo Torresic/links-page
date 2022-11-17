@@ -104,6 +104,7 @@ const GroupContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 80%;
   gap: ${(p) => p.theme.spacing.spacing12};
 `;
 
@@ -116,14 +117,20 @@ const LinksContainer = styled.div`
 `;
 
 const UserPicture = styled.img`
-  height: 200px;
-  width: 200px;
+  height: 100px;
+  width: 100px;
 
   object-fit: cover;
-  margin-top: -100px;
+  margin-top: -50px;
   border: 5px solid ${(p) => p.theme.colors.primary};
   border-radius: ${(p) => p.theme.borderRadius.roundedFull};
   box-shadow: 0px 0px 40px 10px ${(p) => p.theme.colors.primary};
+
+  @media ${p => p.theme.breakpoints.width.desktopS} {
+    height: 200px;
+    width: 200px;
+    margin-top: -100px;
+  }
 `;
 const UserName = styled.h1`
   color: ${(p) => p.theme.colors.primary};
